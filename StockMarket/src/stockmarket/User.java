@@ -29,22 +29,41 @@ public class User {
             //Connect to the server through the socket
             clientSocket = new Socket("192.168.0.48", 5000);
             out = new PrintWriter(clientSocket.getOutputStream(), true);
-            out.print("SquareOne connected");
+            //out.print("SquareOne connected");
+            //out.print("HELP");
         }
         catch (Exception e){
             System.out.println(e.toString());
             return false;
         }
-        return true; 
+         
+        //Make this methods
+        try{
+            
+            stdin = new BufferedReader(new InputStreamReader(System.in));
+            out.println("HELP");
+            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            String tmpStr;
+            while((tmpStr = in.readLine()) != null)
+            {
+                System.out.println(tmpStr);
+            }
+            
+        }
+        catch(Exception e)
+        { 
+        }  
+                System.out.println("Debug1");
+        
+       return true; 
     }
-    
-   
+
     public static boolean Disconnect()
     {
         try{
             in.close();
-            out.close();
             stdin.close();
+            out.close();
             clientSocket.close();
         }
         catch (Exception e){
@@ -53,7 +72,6 @@ public class User {
         }
         return true; 
     }
-    
     
 }
 
