@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package stockmarket;
+import java.io.*;
 
 /**
  *
@@ -13,11 +14,31 @@ public class SendMessages extends Thread
 {
     public void run()
     {
-        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try
+        {
+            String tmp;
+            while(!(tmp = reader.readLine()).equals("STOP"))
+            {
+                    Send(tmp);
+            }
+            StockMarket._user.End();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
     
     void Send(String message)
     {
-        
+        try{
+            PrintWriter out = new PrintWriter(StockMarket.clientSocket.getOutputStream(), true);
+            out.println(message);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
 }

@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.*;
 
 /**
  *
@@ -18,17 +19,18 @@ import java.net.Socket;
 
 public class User {
    
-     static Socket clientSocket;
     static PrintWriter out;
     static BufferedReader in;
     static BufferedReader stdin;
+    static SendMessages sender;
+    static ReceiveMessages recieve;
+    public static int UserID;
     
     public static boolean Connect()
     {
          try{
             //Connect to the server through the socket
-            clientSocket = new Socket("192.168.0.48", 5000);
-            out = new PrintWriter(clientSocket.getOutputStream(), true);
+            out = new PrintWriter(StockMarket.clientSocket.getOutputStream(), true);
             //out.print("SquareOne connected");
             //out.print("HELP");
         }
@@ -36,35 +38,32 @@ public class User {
             System.out.println(e.toString());
             return false;
         }
-         
-        //Make this methods
-        try{
-            
-            stdin = new BufferedReader(new InputStreamReader(System.in));
-            out.println("HELP");
-            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String tmpStr;
-            while((tmpStr = in.readLine()) != null)
-            {
-                System.out.println(tmpStr);
-            }
-            
-        }
-        catch(Exception e)
-        { 
-        }  
-                System.out.println("Debug1");
-        
        return true; 
+    }
+    
+    public static void Start()
+    {
+        sender = new SendMessages();
+        Thread sendThread = new Thread(sender);
+        sendThread.start();
+        
+        recieve = new ReceiveMessages();
+        Thread receiveThread = new Thread(recieve);
+        receiveThread.start();
+    }
+    
+    public static void End()
+    {
+        Disconnect();
     }
 
     public static boolean Disconnect()
     {
         try{
-            in.close();
+            /*in.close();
             stdin.close();
-            out.close();
-            clientSocket.close();
+            out.close();*/
+            StockMarket.clientSocket.close();
         }
         catch (Exception e){
             System.out.println("Disconnected" + e.toString());
