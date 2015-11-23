@@ -5,6 +5,8 @@
  */
 package User;
 
+import static User.StockMarket._user;
+
 /**
  *
  * @author Computing
@@ -110,11 +112,14 @@ public class UserLogIn extends javax.swing.JFrame {
         char[] input = passwordtxt.getPassword();
         String converted = new String(input);
         
-        if(userName.equals("Charles") && converted.equals("Hello"))
-    {
+        _user = new User();
+
+        _user.Connect();
          this.setVisible(false);
                new AllStocks().setVisible(true); 
-    }
+        
+        /*if(userName.equals("Charles") && converted.equals("Hello"))
+    }*/
         
                
             

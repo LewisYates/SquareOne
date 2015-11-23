@@ -5,6 +5,11 @@
  */
 package User;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 /**
  *
  * @author Computing
@@ -150,6 +155,12 @@ public class AllStocks extends javax.swing.JFrame {
                 new AllStocks().setVisible(true);
             }
         });
+        
+        ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+        timer.schedule(new Callable<Void>(){public Void call(){
+            StockMarket._user.sender.Send("DISP:" + StockMarket._user.UserID);
+         return null;   
+        }}, 30L, TimeUnit.SECONDS);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmarket;
+package User;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.*;
 
 /**
  *
@@ -22,17 +20,19 @@ public class User {
     static PrintWriter out;
     static BufferedReader in;
     static BufferedReader stdin;
-    static SendMessages sender;
-    static ReceiveMessages recieve;
+    public static SendMessages sender;
+    public static ReceiveMessages recieve;
     public static int UserID;
     
     public static boolean Connect()
     {
          try{
             //Connect to the server through the socket
+            StockMarket.clientSocket = new Socket("192.168.0.48", 5000);
+            System.out.println("Successfully connected to the server");
             out = new PrintWriter(StockMarket.clientSocket.getOutputStream(), true);
-            //out.print("SquareOne connected");
-            //out.print("HELP");
+            Start();
+            sender.Send("REGI");
         }
         catch (Exception e){
             System.out.println(e.toString());

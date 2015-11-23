@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmarket;
+package User;
 import java.net.Socket;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,10 +30,5 @@ public class StockMarket
             System.out.println(e);
             return;
         }
-        
-        _user = new User();
-
-        _user.Connect();
-        _user.Start();
     }
 }

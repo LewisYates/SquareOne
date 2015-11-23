@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmarket;
+package User;
 import java.io.*;
 
 /**
@@ -30,7 +30,7 @@ public class SendMessages extends Thread
         }
     }
     
-    void Send(String message)
+    public void Send(String message)
     {
         try{
             PrintWriter out = new PrintWriter(StockMarket.clientSocket.getOutputStream(), true);

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmarket;
+package User;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -25,10 +25,14 @@ public class ReceiveMessages extends Thread
                 if (tmp.contains("REGI:SUCCESS"))
                 {
                     StockMarket._user.UserID = Integer.parseInt(tmp.split(":")[2]);
+                    Receive(tmp);
                     System.out.println(tmp);
                 }
                 else 
+                {
+                    Receive(tmp);
                     System.out.println(tmp);
+                }
             }
         }
         catch(Exception e)
@@ -36,8 +40,8 @@ public class ReceiveMessages extends Thread
         }
     }
     
-    String Receive()
+    String Receive(String s)
     {
-        return "";
+        return s;
     }
 }
