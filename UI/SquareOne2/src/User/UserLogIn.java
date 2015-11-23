@@ -36,9 +36,14 @@ public class UserLogIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        passwordtxt.setText("jPasswordField1");
+        passwordtxt.setText("Hello");
 
-        userNametxt.setText("jTextField1");
+        userNametxt.setText("Charles");
+        userNametxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNametxtActionPerformed(evt);
+            }
+        });
 
         loginbtn.setText("Log In");
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -47,11 +52,12 @@ public class UserLogIn extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("User Name");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Password");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Welcome to Square One");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,18 +76,19 @@ public class UserLogIn extends javax.swing.JFrame {
                             .addComponent(userNametxt)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(274, 274, 274)
-                        .addComponent(loginbtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(jLabel3)))
-                .addContainerGap(283, Short.MAX_VALUE))
+                        .addComponent(loginbtn)))
+                .addContainerGap(317, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(229, 229, 229))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -115,6 +122,10 @@ public class UserLogIn extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_loginbtnActionPerformed
+
+    private void userNametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNametxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNametxtActionPerformed
 
     /**
      * @param args the command line arguments
