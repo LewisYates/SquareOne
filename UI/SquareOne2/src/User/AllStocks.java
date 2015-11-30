@@ -5,6 +5,8 @@
  */
 package User;
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -39,6 +41,16 @@ public class AllStocks extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,6 +134,14 @@ public class AllStocks extends javax.swing.JFrame {
         new SellStocks2().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        
+    }//GEN-LAST:event_formComponentShown
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        StockMarket._user.sender.Send("DISP");
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -156,11 +176,11 @@ public class AllStocks extends javax.swing.JFrame {
             }
         });
         
-        ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+        /*ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
         timer.schedule(new Callable<Void>(){public Void call(){
             StockMarket._user.sender.Send("DISP:" + StockMarket._user.UserID);
          return null;   
-        }}, 30L, TimeUnit.SECONDS);
+        }}, 30L, TimeUnit.SECONDS);*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

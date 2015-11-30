@@ -5,9 +5,11 @@
  */
 package User;
 
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +19,7 @@ import java.net.Socket;
 
 public class User {
    
+    public static List<String> STK;
     static PrintWriter out;
     static BufferedReader in;
     static BufferedReader stdin;
@@ -27,8 +30,10 @@ public class User {
     public static boolean Connect()
     {
          try{
+            STK = new ArrayList<String>();
             //Connect to the server through the socket
             StockMarket.clientSocket = new Socket("192.168.0.48", 5000);
+            //StockMarket.clientSocket = new Socket("localhost", 5000);
             System.out.println("Successfully connected to the server");
             out = new PrintWriter(StockMarket.clientSocket.getOutputStream(), true);
             Start();
@@ -64,6 +69,7 @@ public class User {
             stdin.close();
             out.close();*/
             StockMarket.clientSocket.close();
+            System.out.println("Disconnected");
         }
         catch (Exception e){
             System.out.println("Disconnected" + e.toString());

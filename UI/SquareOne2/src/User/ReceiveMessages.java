@@ -24,13 +24,16 @@ public class ReceiveMessages extends Thread
             {
                 if (tmp.contains("REGI:SUCCESS"))
                 {
-                    StockMarket._user.UserID = Integer.parseInt(tmp.split(":")[2]);
-                    Receive(tmp);
+                    String s = tmp.split(":")[2];
+                    StockMarket._user.UserID = Integer.parseInt(s);
                     System.out.println(tmp);
                 }
-                else 
+                else if(tmp.contains("STK"))
                 {
-                    Receive(tmp);
+                    StockMarket._user.STK.add(tmp);
+                }
+                else
+                {
                     System.out.println(tmp);
                 }
             }

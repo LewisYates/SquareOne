@@ -18,11 +18,15 @@ public class SendMessages extends Thread
         try
         {
             String tmp;
-            while(!(tmp = reader.readLine()).equals("STOP"))
+            while(!(tmp = reader.readLine()).equals(""))
             {
-                    Send(tmp);
+                if(tmp.contains("DISP"))
+                {
+                    StockMarket._user.STK.clear();
+                }
+                
+                Send(tmp);
             }
-            StockMarket._user.End();
         }
         catch (Exception e)
         {

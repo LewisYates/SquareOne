@@ -119,13 +119,7 @@ public class UserLogIn extends javax.swing.JFrame {
                new AllStocks().setVisible(true); 
         
         /*if(userName.equals("Charles") && converted.equals("Hello"))
-    }*/
-        
-               
-            
-            
-        
-        
+    }*/        
     }//GEN-LAST:event_loginbtnActionPerformed
 
     private void userNametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNametxtActionPerformed
