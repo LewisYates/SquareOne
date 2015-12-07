@@ -29,7 +29,6 @@ public class UserLogIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        passwordtxt = new javax.swing.JPasswordField();
         userNametxt = new javax.swing.JTextField();
         loginbtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -37,8 +36,6 @@ public class UserLogIn extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        passwordtxt.setText("Hello");
 
         userNametxt.setText("Charles");
         userNametxt.addActionListener(new java.awt.event.ActionListener() {
@@ -73,9 +70,7 @@ public class UserLogIn extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(passwordtxt)
-                            .addComponent(userNametxt)))
+                        .addComponent(userNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(274, 274, 274)
                         .addComponent(loginbtn)))
@@ -94,11 +89,9 @@ public class UserLogIn extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(93, 93, 93)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(69, 69, 69)
+                .addGap(96, 96, 96)
+                .addComponent(jLabel2)
+                .addGap(72, 72, 72)
                 .addComponent(loginbtn)
                 .addGap(71, 71, 71))
         );
@@ -112,11 +105,7 @@ public class UserLogIn extends javax.swing.JFrame {
         char[] input = passwordtxt.getPassword();
         String converted = new String(input);
         
-        _user = new User();
-
-        _user.Connect();
-         this.setVisible(false);
-               new AllStocks().setVisible(true); 
+        
         
         /*if(userName.equals("Charles") && converted.equals("Hello"))
     }*/        
@@ -154,11 +143,11 @@ public class UserLogIn extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UserLogIn().setVisible(true);
-            }
-        });
+        
+        _user = new User();
+
+        _user.Connect();
+        ; 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -166,7 +155,6 @@ public class UserLogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton loginbtn;
-    private javax.swing.JPasswordField passwordtxt;
     private javax.swing.JTextField userNametxt;
     // End of variables declaration//GEN-END:variables
 }

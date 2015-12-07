@@ -20,12 +20,14 @@ import java.util.ArrayList;
 public class User {
    
     public static List<String> STK;
+    public static List<String> OwnedStocks;
     static PrintWriter out;
     static BufferedReader in;
     static BufferedReader stdin;
     public static SendMessages sender;
     public static ReceiveMessages recieve;
     public static int UserID;
+    public static float UserMoney = 150000;
     
     public static boolean Connect()
     {

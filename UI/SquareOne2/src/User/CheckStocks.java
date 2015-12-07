@@ -5,6 +5,7 @@
  */
 package User;
 
+
 /**
  *
  * @author Computing
@@ -125,7 +126,9 @@ public class CheckStocks extends javax.swing.JFrame {
                 new CheckStocks().setVisible(true);
             }
         });
+    
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

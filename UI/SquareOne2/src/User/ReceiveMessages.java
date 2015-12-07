@@ -22,19 +22,25 @@ public class ReceiveMessages extends Thread
             String tmp;
             while(!(tmp = in.readLine()).equals(null))
             {
+                System.out.println(tmp);
                 if (tmp.contains("REGI:SUCCESS"))
                 {
                     String s = tmp.split(":")[2];
                     StockMarket._user.UserID = Integer.parseInt(s);
-                    System.out.println(tmp);
                 }
                 else if(tmp.contains("STK"))
                 {
                     StockMarket._user.STK.add(tmp);
                 }
-                else
+                else if(tmp.contains("ACK:BUY"))
                 {
-                    System.out.println(tmp);
+                    String[] SplitString = tmp.split(":");
+                    StockMarket._user.UserMoney-=Float.valueOf(SplitString[5]);
+                    StockMarket._user.OwnedStocks.add(SplitString[4] + ":" + SplitString[3]);
+                }
+                else if(tmp.contains("ACK:SELL"))
+                {
+                    
                 }
             }
         }
@@ -46,5 +52,20 @@ public class ReceiveMessages extends Thread
     String Receive(String s)
     {
         return s;
+    }
+    
+    public int checkStock(String name)
+    {
+        int quantity = 0;
+        for(int i = 0; i < StockMarket._user.OwnedStocks.size() ;i ++)
+        {
+            String entry = StockMarket._user.OwnedStocks.get(i);
+            if (entry.contains (name))
+            {
+                String[] SplitString = entry.split(":");
+                quantity+=Integer.parseInt(SplitString[1]);
+            }
+        }
+        return quantity;
     }
 }
